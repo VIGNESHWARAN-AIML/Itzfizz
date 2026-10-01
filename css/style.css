@@ -1,0 +1,628 @@
+/* ==========================================================================
+   ItzFizz - Scroll-Driven Hero Motion Stylesheet
+   Crafted with custom properties, GPU-accelerated motion & premium dark aesthetic
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  --color-bg: #07090e;
+  --color-bg-secondary: #0c0f17;
+  --color-surface: #111520;
+  --color-surface-hover: #171c2b;
+  --color-surface-border: rgba(255, 255, 255, 0.08);
+  --color-surface-border-subtle: rgba(255, 255, 255, 0.04);
+  
+  /* Primary Signature Accent: Electric Hypercar Orange */
+  --color-accent: #ff4d00;
+  --color-accent-secondary: #ff7733;
+  --color-accent-glow: rgba(255, 77, 0, 0.45);
+  --color-accent-subtle: rgba(255, 77, 0, 0.12);
+  
+  /* Cyan Laser Beam Accent */
+  --color-laser: #38bdf8;
+  --color-laser-glow: rgba(56, 189, 248, 0.4);
+
+  --color-text: #f9fafb;
+  --color-text-secondary: #9ca3af;
+  --color-text-muted: #6b7280;
+
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --hero-pin-height: 200vh;
+}
+
+/* Base resets & typography */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  scroll-behavior: auto; /* Managed smoothly by Lenis / GSAP */
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Lenis smooth scroll standard styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Header & Top Bar Contract (3-Zone strict)
+   ========================================================================== */
+.top-nav-bar {
+  background: linear-gradient(180deg, rgba(7, 9, 14, 0.85) 0%, rgba(7, 9, 14, 0) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-surface-border-subtle);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: 64px;
+}
+
+.brand-wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  transition: opacity 0.2s ease;
+}
+
+.brand-wordmark:hover {
+  opacity: 0.85;
+}
+
+/* ==========================================================================
+   Hero Section Layout
+   ========================================================================== */
+.hero-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 30%, #151b29 0%, #07090e 70%, #040508 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Ambient dynamic background lighting */
+.hero-ambient-glow {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 480px;
+  background: radial-gradient(ellipse at center, rgba(255, 77, 0, 0.15) 0%, rgba(56, 189, 248, 0.05) 45%, transparent 70%);
+  pointer-events: none;
+  filter: blur(70px);
+  z-index: 1;
+}
+
+/* Center Stage Content (Headline + Track) */
+.hero-center-stage {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+/* ==========================================================================
+   Kinetic Headline Styling
+   ========================================================================== */
+.kinetic-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5.8vw, 6.4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  text-align: center;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.15em;
+  position: relative;
+  z-index: 15;
+}
+
+/* Each animated letter span */
+.headline-char {
+  display: inline-block;
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform, opacity, color;
+  transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(0);
+}
+
+/* Word separation spacer */
+.headline-spacer {
+  display: inline-block;
+  width: 0.5em;
+}
+
+/* Reacting illuminated state (triggered as car passes) */
+.headline-char.active-glow {
+  color: #ffffff;
+  text-shadow: 
+    0 0 18px var(--color-accent),
+    0 0 36px var(--color-accent-glow),
+    0 0 60px rgba(255, 77, 0, 0.25);
+  transform: translateY(-4px) scale(1.04);
+}
+
+.headline-char.passed {
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+}
+
+/* ==========================================================================
+   Car Motion Track & Vehicle Stage
+   ========================================================================== */
+.car-stage {
+  position: absolute;
+  top: 56%;
+  left: 0;
+  width: 100%;
+  height: 220px;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.car-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: clamp(340px, 48vw, 760px);
+  aspect-ratio: 900 / 320;
+  will-change: transform;
+  transform: translate3d(-35vw, 0, 0);
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.7));
+}
+
+.car-asset-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+}
+
+/* SVG Wheel Rotation Classes */
+.rotating-spokes {
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* Dynamic headlight beam cone */
+.car-beam-overlay {
+  position: absolute;
+  top: 48%;
+  right: -320px;
+  width: 360px;
+  height: 140px;
+  background: radial-gradient(ellipse at left center, rgba(56, 189, 248, 0.35) 0%, rgba(56, 189, 248, 0.12) 40%, transparent 75%);
+  transform: translateY(-50%) rotate(4deg);
+  pointer-events: none;
+  filter: blur(12px);
+  mix-blend-mode: screen;
+  z-index: 25;
+}
+
+/* ==========================================================================
+   Grounded Road & Floor Grid
+   ========================================================================== */
+.road-ground-plane {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 38%;
+  background: linear-gradient(180deg, rgba(7, 9, 14, 0) 0%, rgba(14, 18, 27, 0.6) 25%, #080a0f 100%);
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+}
+
+/* Laser Horizon Guide Line */
+.road-laser-line {
+  position: absolute;
+  top: 36%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 77, 0, 0.1) 15%, 
+    rgba(255, 77, 0, 0.75) 50%, 
+    rgba(56, 189, 248, 0.6) 80%, 
+    transparent 100%);
+  box-shadow: 0 0 12px var(--color-accent);
+}
+
+/* Perspective Floor Speed Grid */
+.road-perspective-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 24px;
+  transform: perspective(400px) rotateX(62deg);
+  transform-origin: top center;
+  opacity: 0.65;
+  mask-image: linear-gradient(to bottom, transparent, black 40%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 40%, black 90%, transparent);
+}
+
+/* Asphalt Dynamic Reflection Strip */
+.road-asphalt-reflection {
+  position: absolute;
+  top: 36%;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: linear-gradient(180deg, rgba(255, 77, 0, 0.12) 0%, transparent 100%);
+  filter: blur(8px);
+}
+
+/* ==========================================================================
+   Impact Stats Row (4 Columns Desktop, 2x2 Mobile)
+   ========================================================================== */
+.hero-stats-wrapper {
+  position: relative;
+  z-index: 30;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem 1.5rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.stat-card {
+  background: rgba(17, 21, 32, 0.65);
+  border: 1px solid var(--color-surface-border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+  will-change: transform, opacity;
+}
+
+.stat-card:hover {
+  background: rgba(23, 28, 43, 0.8);
+  border-color: rgba(255, 77, 0, 0.35);
+  transform: translateY(-2px);
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-weight: 800;
+  line-height: 1;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.15rem;
+}
+
+.stat-number-accent {
+  color: var(--color-accent);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  line-height: 1.35;
+}
+
+/* ==========================================================================
+   Scroll Down Indicator Cue
+   ========================================================================== */
+.scroll-indicator {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  z-index: 35;
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+.scroll-indicator-line {
+  width: 1px;
+  height: 28px;
+  background: linear-gradient(180deg, var(--color-accent) 0%, transparent 100%);
+  animation: scrollPulse 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes scrollPulse {
+  0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  40% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  80% { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+
+/* ==========================================================================
+   Filler Sections for Testing Real Scroll-Driven Experience
+   ========================================================================== */
+.content-section {
+  position: relative;
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-surface-border-subtle);
+  padding: 7rem 1.5rem;
+  z-index: 40;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.editorial-header {
+  margin-bottom: 3.5rem;
+}
+
+.editorial-tag {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.8vw, 3.4rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  text-wrap: balance;
+  margin: 0;
+}
+
+/* Asymmetric Bento Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .bento-col-2 {
+    grid-column: span 2;
+  }
+}
+
+.bento-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-border);
+  border-radius: 16px;
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.bento-card:hover {
+  border-color: rgba(255, 77, 0, 0.4);
+  background-color: var(--color-surface-hover);
+}
+
+.bento-number {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  margin-bottom: 1.25rem;
+}
+
+.bento-card-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.bento-card-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* Interactive Tuner Panel */
+.tuner-panel {
+  background: rgba(17, 21, 32, 0.75);
+  border: 1px solid var(--color-surface-border);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--color-accent);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-secondary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px var(--color-accent-glow);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: var(--color-text);
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-surface-border);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Clean Unboxed Metadata */
+.metadata-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+/* Form input */
+.text-input {
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #ffffff;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+/* ==========================================================================
+   Prefers Reduced Motion Accessibility
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .headline-char {
+    opacity: 1 !important;
+    transform: none !important;
+    color: #ffffff !important;
+  }
+
+  .car-container {
+    transform: translate3d(50vw, 0, 0) !important;
+  }
+
+  .stat-card {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .scroll-indicator-line {
+    animation: none !important;
+  }
+}

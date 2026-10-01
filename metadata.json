@@ -1,0 +1,6 @@
+{
+  "name": "ItzFizz - Scroll-Driven Hero Motion",
+  "description": "Production-grade scroll-driven hero animation featuring GSAP ScrollTrigger, kinetic typography, and fluid automotive motion.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
