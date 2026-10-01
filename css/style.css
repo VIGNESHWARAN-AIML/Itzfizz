@@ -1,27 +1,27 @@
 /* ==========================================================================
-   ItzFizz - Scroll-Driven Hero Motion Stylesheet
-   Crafted with custom properties, GPU-accelerated motion & premium dark aesthetic
+   ItzFizz - Real-World Photorealistic Automotive Motion Stylesheet
+   Crafted with custom properties, GPU-accelerated motion & cinematic depth
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap');
 
 :root {
-  --color-bg: #07090e;
-  --color-bg-secondary: #0c0f17;
-  --color-surface: #111520;
-  --color-surface-hover: #171c2b;
+  --color-bg: #050608;
+  --color-bg-secondary: #0a0c10;
+  --color-surface: #0f1218;
+  --color-surface-hover: #151a24;
   --color-surface-border: rgba(255, 255, 255, 0.08);
   --color-surface-border-subtle: rgba(255, 255, 255, 0.04);
   
-  /* Primary Signature Accent: Electric Hypercar Orange */
+  /* Signature Real-World Hypercar Accent: Electric Blaze Orange */
   --color-accent: #ff4d00;
   --color-accent-secondary: #ff7733;
   --color-accent-glow: rgba(255, 77, 0, 0.45);
   --color-accent-subtle: rgba(255, 77, 0, 0.12);
   
-  /* Cyan Laser Beam Accent */
+  /* Laser Headlight Temperature (Clean 6500K Xenon/Laser Blue) */
   --color-laser: #38bdf8;
-  --color-laser-glow: rgba(56, 189, 248, 0.4);
+  --color-laser-glow: rgba(56, 189, 248, 0.5);
 
   --color-text: #f9fafb;
   --color-text-secondary: #9ca3af;
@@ -31,7 +31,7 @@
   --font-body: 'Plus Jakarta Sans', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  --hero-pin-height: 200vh;
+  --hero-pin-height: 220vh;
 }
 
 /* Base resets & typography */
@@ -43,7 +43,7 @@ html {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
-  scroll-behavior: auto; /* Managed smoothly by Lenis / GSAP */
+  scroll-behavior: auto;
   overflow-x: hidden;
 }
 
@@ -74,24 +74,20 @@ html.lenis, html.lenis body {
   overflow: hidden;
 }
 
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
-
 /* ==========================================================================
    Header & Top Bar Contract (3-Zone strict)
    ========================================================================== */
 .top-nav-bar {
-  background: linear-gradient(180deg, rgba(7, 9, 14, 0.85) 0%, rgba(7, 9, 14, 0) 100%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: linear-gradient(180deg, rgba(5, 6, 8, 0.92) 0%, rgba(5, 6, 8, 0.5) 70%, transparent 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--color-surface-border-subtle);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 50;
-  height: 64px;
+  z-index: 60;
+  height: 68px;
 }
 
 .brand-wordmark {
@@ -107,7 +103,7 @@ html.lenis, html.lenis body {
 }
 
 /* ==========================================================================
-   Hero Section Layout
+   Hero Section Layout & Studio Atmosphere
    ========================================================================== */
 .hero-wrapper {
   position: relative;
@@ -115,24 +111,39 @@ html.lenis, html.lenis body {
   height: 100vh;
   height: 100svh;
   overflow: hidden;
-  background: radial-gradient(circle at 50% 30%, #151b29 0%, #07090e 70%, #040508 100%);
+  background: radial-gradient(circle at 50% 28%, #141923 0%, #080a0e 55%, #030406 100%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
 
-/* Ambient dynamic background lighting */
-.hero-ambient-glow {
+/* Studio Overhead Softbox Strip Light Reflections */
+.studio-ceiling-light {
   position: absolute;
-  top: -10%;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 900px;
-  height: 480px;
-  background: radial-gradient(ellipse at center, rgba(255, 77, 0, 0.15) 0%, rgba(56, 189, 248, 0.05) 45%, transparent 70%);
+  width: 100%;
+  max-width: 1300px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 20%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0.1) 80%, transparent 100%);
+  box-shadow: 0 0 45px rgba(255, 255, 255, 0.4);
   pointer-events: none;
-  filter: blur(70px);
+  z-index: 2;
+}
+
+/* Atmospheric Volumetric Haze Bloom */
+.hero-ambient-glow {
+  position: absolute;
+  top: -5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 520px;
+  background: radial-gradient(ellipse at center, rgba(255, 77, 0, 0.14) 0%, rgba(56, 189, 248, 0.06) 40%, transparent 70%);
+  pointer-events: none;
+  filter: blur(80px);
   z-index: 1;
 }
 
@@ -152,16 +163,16 @@ html.lenis, html.lenis body {
 }
 
 /* ==========================================================================
-   Kinetic Headline Styling
+   Real-World 3D Kinetic Headline
    ========================================================================== */
 .kinetic-headline {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 5.8vw, 6.4rem);
+  font-size: clamp(2.3rem, 6.2vw, 6.6rem);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.05;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.25);
   text-align: center;
   user-select: none;
   margin: 0;
@@ -173,62 +184,63 @@ html.lenis, html.lenis body {
   flex-wrap: wrap;
   gap: 0.15em;
   position: relative;
-  z-index: 15;
+  z-index: 12; /* Sits naturally behind the car foreground */
+  perspective: 1000px;
 }
 
-/* Each animated letter span */
+/* Each animated letter span with specular lighting reaction */
 .headline-char {
   display: inline-block;
   position: relative;
   transform-style: preserve-3d;
-  will-change: transform, opacity, color;
-  transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity, color, text-shadow;
+  transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   transform: translateZ(0);
 }
 
-/* Word separation spacer */
 .headline-spacer {
   display: inline-block;
-  width: 0.5em;
+  width: 0.45em;
 }
 
-/* Reacting illuminated state (triggered as car passes) */
+/* Reacting illuminated state (triggered precisely as car sweeps past) */
 .headline-char.active-glow {
   color: #ffffff;
   text-shadow: 
-    0 0 18px var(--color-accent),
-    0 0 36px var(--color-accent-glow),
-    0 0 60px rgba(255, 77, 0, 0.25);
-  transform: translateY(-4px) scale(1.04);
+    0 0 20px #ffffff,
+    0 0 35px var(--color-accent),
+    0 0 65px var(--color-accent-glow),
+    0 0 100px rgba(255, 77, 0, 0.35);
+  transform: translateY(-6px) scale(1.08) translateZ(30px);
 }
 
 .headline-char.passed {
   color: rgba(255, 255, 255, 0.88);
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 /* ==========================================================================
-   Car Motion Track & Vehicle Stage
+   Real-World Vehicle Motion Track & Dual Wet Mirror Reflection
    ========================================================================== */
 .car-stage {
   position: absolute;
-  top: 56%;
+  top: 54%;
   left: 0;
   width: 100%;
-  height: 220px;
+  height: 240px;
   pointer-events: none;
-  z-index: 20;
+  z-index: 25; /* Passes directly in front of the headline */
 }
 
 .car-container {
   position: absolute;
   top: 0;
   left: 0;
-  width: clamp(340px, 48vw, 760px);
-  aspect-ratio: 900 / 320;
+  width: clamp(360px, 50vw, 820px);
+  aspect-ratio: 1000 / 360;
   will-change: transform;
   transform: translate3d(-35vw, 0, 0);
-  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.85));
 }
 
 .car-asset-wrapper {
@@ -238,83 +250,141 @@ html.lenis, html.lenis body {
   transform-origin: center center;
 }
 
+/* Real-World Wet Ground Mirror Reflection */
+.car-wet-reflection {
+  position: absolute;
+  top: 86%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scaleY(-0.75) skewX(-2deg);
+  transform-origin: top center;
+  opacity: 0.38;
+  filter: blur(2.5px) brightness(0.65) contrast(1.2);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 35%, transparent 75%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 35%, transparent 75%);
+  pointer-events: none;
+  z-index: 8;
+}
+
 /* SVG Wheel Rotation Classes */
 .rotating-spokes {
-  transform-box: fill-box;
-  transform-origin: center;
+  transform-box: view-box;
   will-change: transform;
 }
 
-/* Dynamic headlight beam cone */
+#wheel-rear-spokes, #wheel-rear-spokes-reflect {
+  transform-origin: 255px 260px;
+}
+
+#wheel-front-spokes, #wheel-front-spokes-reflect {
+  transform-origin: 765px 260px;
+}
+
+/* Volumetric Headlight Laser Projection Cone */
 .car-beam-overlay {
   position: absolute;
   top: 48%;
-  right: -320px;
-  width: 360px;
-  height: 140px;
-  background: radial-gradient(ellipse at left center, rgba(56, 189, 248, 0.35) 0%, rgba(56, 189, 248, 0.12) 40%, transparent 75%);
-  transform: translateY(-50%) rotate(4deg);
+  right: -360px;
+  width: 440px;
+  height: 180px;
+  background: radial-gradient(ellipse at left center, rgba(56, 189, 248, 0.42) 0%, rgba(56, 189, 248, 0.14) 45%, transparent 78%);
+  transform: translateY(-50%) rotate(5deg);
   pointer-events: none;
-  filter: blur(12px);
+  filter: blur(14px);
   mix-blend-mode: screen;
-  z-index: 25;
+  z-index: 30;
+}
+
+/* Hotspot of light hitting the road surface directly ahead */
+.headlight-road-spotlight {
+  position: absolute;
+  top: 85%;
+  right: -240px;
+  width: 320px;
+  height: 48px;
+  background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.45) 0%, rgba(56, 189, 248, 0.12) 50%, transparent 80%);
+  filter: blur(10px);
+  pointer-events: none;
+  z-index: 15;
 }
 
 /* ==========================================================================
-   Grounded Road & Floor Grid
+   Photorealistic Wet Asphalt Ground Plane & Lane Markings
    ========================================================================== */
 .road-ground-plane {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 38%;
-  background: linear-gradient(180deg, rgba(7, 9, 14, 0) 0%, rgba(14, 18, 27, 0.6) 25%, #080a0f 100%);
+  height: 42%;
+  background: linear-gradient(180deg, rgba(5, 6, 8, 0) 0%, rgba(12, 15, 22, 0.7) 20%, #06070a 100%);
   pointer-events: none;
-  z-index: 5;
+  z-index: 6;
   overflow: hidden;
 }
 
-/* Laser Horizon Guide Line */
-.road-laser-line {
+/* Wet Asphalt Granular Surface Texture */
+.road-asphalt-texture {
   position: absolute;
-  top: 36%;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(255, 77, 0, 0.1) 15%, 
-    rgba(255, 77, 0, 0.75) 50%, 
-    rgba(56, 189, 248, 0.6) 80%, 
-    transparent 100%);
-  box-shadow: 0 0 12px var(--color-accent);
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 8px 8px;
+  opacity: 0.25;
 }
 
-/* Perspective Floor Speed Grid */
+/* Laser Horizon Road Guideline */
+.road-laser-line {
+  position: absolute;
+  top: 34%;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 77, 0, 0.2) 15%, 
+    rgba(255, 77, 0, 0.85) 50%, 
+    rgba(56, 189, 248, 0.75) 85%, 
+    transparent 100%);
+  box-shadow: 0 0 16px var(--color-accent);
+}
+
+/* Perspective Floor Speed Grid with Asphalt Texture */
 .road-perspective-grid {
   position: absolute;
   inset: 0;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 60px 24px;
-  transform: perspective(400px) rotateX(62deg);
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 70px 28px;
+  transform: perspective(420px) rotateX(64deg);
   transform-origin: top center;
   opacity: 0.65;
-  mask-image: linear-gradient(to bottom, transparent, black 40%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, transparent, black 40%, black 90%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 35%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 35%, black 90%, transparent);
+}
+
+/* Highway Center Dashed Marking Line */
+.road-lane-marker {
+  position: absolute;
+  top: 55%;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0px, rgba(255, 255, 255, 0.3) 60px, transparent 60px, transparent 140px);
+  transform: perspective(420px) rotateX(64deg);
+  opacity: 0.45;
 }
 
 /* Asphalt Dynamic Reflection Strip */
 .road-asphalt-reflection {
   position: absolute;
-  top: 36%;
+  top: 34%;
   left: 0;
   right: 0;
-  height: 48px;
-  background: linear-gradient(180deg, rgba(255, 77, 0, 0.12) 0%, transparent 100%);
-  filter: blur(8px);
+  height: 60px;
+  background: linear-gradient(180deg, rgba(255, 77, 0, 0.16) 0%, transparent 100%);
+  filter: blur(10px);
 }
 
 /* ==========================================================================
@@ -322,11 +392,11 @@ html.lenis, html.lenis body {
    ========================================================================== */
 .hero-stats-wrapper {
   position: relative;
-  z-index: 30;
+  z-index: 35;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem 3rem 1.5rem;
+  padding: 0 1.5rem 2.75rem 1.5rem;
 }
 
 .stats-grid {
@@ -343,19 +413,21 @@ html.lenis, html.lenis body {
 }
 
 .stat-card {
-  background: rgba(17, 21, 32, 0.65);
+  background: rgba(15, 18, 24, 0.72);
   border: 1px solid var(--color-surface-border);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 1.25rem 1.5rem;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
   will-change: transform, opacity;
 }
 
 .stat-card:hover {
-  background: rgba(23, 28, 43, 0.8);
-  border-color: rgba(255, 77, 0, 0.35);
+  background: rgba(21, 26, 36, 0.85);
+  border-color: rgba(255, 77, 0, 0.4);
+  box-shadow: 0 12px 32px rgba(255, 77, 0, 0.15);
   transform: translateY(-2px);
 }
 
@@ -385,6 +457,80 @@ html.lenis, html.lenis body {
 }
 
 /* ==========================================================================
+   Real-World Digital Cockpit HUD (G-Meter, Speed, Gear, Audio)
+   ========================================================================== */
+.cockpit-hud-overlay {
+  position: absolute;
+  top: 80px;
+  right: 24px;
+  z-index: 55;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hud-pill {
+  background: rgba(10, 13, 18, 0.85);
+  border: 1px solid var(--color-surface-border);
+  border-radius: 10px;
+  padding: 6px 14px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #e2e8f0;
+}
+
+.hud-gear-badge {
+  background: var(--color-accent);
+  color: #ffffff;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-size: 0.75rem;
+}
+
+/* Audio Ignition Switch Pill */
+.audio-toggle-btn {
+  background: rgba(15, 18, 24, 0.85);
+  border: 1px solid var(--color-surface-border);
+  border-radius: 10px;
+  padding: 7px 14px;
+  backdrop-filter: blur(10px);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.audio-toggle-btn.is-active {
+  border-color: var(--color-accent);
+  background: rgba(255, 77, 0, 0.15);
+  color: #ff8533;
+}
+
+.audio-indicator-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #64748b;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.audio-toggle-btn.is-active .audio-indicator-dot {
+  background-color: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent);
+}
+
+/* ==========================================================================
    Scroll Down Indicator Cue
    ========================================================================== */
 .scroll-indicator {
@@ -396,14 +542,14 @@ html.lenis, html.lenis body {
   flex-direction: column;
   align-items: center;
   gap: 0.35rem;
-  z-index: 35;
+  z-index: 38;
   color: var(--color-text-muted);
   font-size: 0.7rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 600;
   pointer-events: none;
-  opacity: 0.75;
+  opacity: 0.8;
 }
 
 .scroll-indicator-line {
@@ -421,13 +567,13 @@ html.lenis, html.lenis body {
 }
 
 /* ==========================================================================
-   Filler Sections for Testing Real Scroll-Driven Experience
+   Filler Content Sections
    ========================================================================== */
 .content-section {
   position: relative;
   background-color: var(--color-bg);
   border-top: 1px solid var(--color-surface-border-subtle);
-  padding: 7rem 1.5rem;
+  padding: 7.5rem 1.5rem;
   z-index: 40;
 }
 
@@ -515,14 +661,14 @@ html.lenis, html.lenis body {
   line-height: 1.6;
 }
 
-/* Interactive Tuner Panel */
+/* Interactive Studio Tuner */
 .tuner-panel {
-  background: rgba(17, 21, 32, 0.75);
+  background: rgba(15, 18, 24, 0.8);
   border: 1px solid var(--color-surface-border);
   border-radius: 16px;
-  padding: 2rem;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  padding: 2.25rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 /* Buttons */
@@ -568,15 +714,6 @@ html.lenis, html.lenis body {
 .btn-secondary:hover {
   background-color: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Clean Unboxed Metadata */
-.metadata-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  color: var(--color-text-secondary);
 }
 
 /* Form input */

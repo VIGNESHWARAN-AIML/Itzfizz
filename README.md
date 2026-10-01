@@ -1,28 +1,35 @@
-# ItzFizz — Scroll-Driven Hero Section Animation
+# ItzFizz — Real-World Photorealistic Scroll-Driven Hero Animation
 
-A production-quality, high-performance scroll-driven hero section inspired by [paraschaturvedi.github.io/car-scroll-animation](https://paraschaturvedi.github.io/car-scroll-animation). Built entirely with **HTML5, CSS3, vanilla JavaScript**, **GSAP 3 + ScrollTrigger**, and **Tailwind CSS**. It is fully static and ready to deploy directly to GitHub Pages without any mandatory build step.
+A production-grade, cinematic real-world scroll-driven automotive experience inspired by [paraschaturvedi.github.io/car-scroll-animation](https://paraschaturvedi.github.io/car-scroll-animation) and the legendary **Toyota Supra MK4 (A80 generation, built from 1993 to 2002)**. Built with **HTML5, CSS3, vanilla JavaScript**, **GSAP 3 + ScrollTrigger**, and **Tailwind CSS**. It is fully static and ready to deploy directly to GitHub Pages without any build step.
 
 ---
 
-## 🏎️ Live Demo & Overview
+## 🏎️ Key Features
 
-- **Brand**: ItzFizz
-- **Kinetic Headline**: `W E L C O M E   I T Z F I Z Z` with dynamically reactive letters
-- **Hero Height**: `100svh` with a `100vh` fallback
-- **Impact Stats**:
-  - `98%` — Customer satisfaction rating
-  - `3x` — Faster performance velocity
-  - `40%` — Cost reduction efficiency
-  - `24/7` — Support availability uptime
-- **Vehicle Stage**: Ultra-crisp vector supercar with rolling multi-spoke turbine rims, aerodynamic suspension tilt, glowing LED taillight bar, and projecting laser headlight beam. Supports swapping any custom transparent PNG/WebP cutout URL on the fly.
-- **Scroll Pinning**: Hero section pins for `200vh` scroll duration, smoothly translating the vehicle across the viewport as letters illuminate sequentially upon proximity.
+1. **Toyota Supra MK4 (A80, 1993–2002) 2JZ-GTE Twin-Turbo Sound Synthesizer**:
+   - Synthesizes the authentic 3.0L Inline-6 engine firing harmonics ($1\text{-}5\text{-}3\text{-}6\text{-}2\text{-}4$ sequence with $37.5\text{ Hz}$ base idle at 750 RPM up to $350\text{ Hz}$ redline howl at 7000 RPM).
+   - **Denso starter motor crank sequence**: Authentic 3-chug compression turnover and rev flare ignition.
+   - **CT12B Sequential Twin-Turbo Spool**: Primary turbo spools from low speed ($980\text{ Hz} \to 2200\text{ Hz}$ whistle); secondary turbo hits hard at high speed ($1900\text{ Hz} \to 3800\text{ Hz}$ scream).
+   - **Iconic HKS SSQV Blow-off Valve & Wastegate Surge Flutter (`TSCHIIIRP - STU-TU-TU-TU-TU`)**: High-frequency metallic chirp followed by rhythmic compressor surge chops and overrun backfire pop on deceleration.
+   - **Fast Scroll Auto Cutoff & Zero Idle Leak**: When you scroll fast down past the hero section, the engine sound **instantly shuts off** via ScrollTrigger `onLeave`, `onLeaveBack`, and a dedicated window scroll safety monitor. When you stop scrolling, the engine sound cleanly drops to 0 dB instead of droning forever.
+
+2. **Restored Original Sports Alloy Wheel Architecture**:
+   - Pristine, high-fidelity sports wheel design with outer tire rubber, sidewall rings, ventilated carbon ceramic rotor, and cross-drilled cooling holes.
+   - **Stationary Gold Brembo-style brake calipers** that remain locked at the 10 o'clock position while the wheels spin.
+   - **Dynamic Rotating Alloy Spokes**: Smooth $2160^\circ$ (6 full rotations) spin centered around rear axle ($X=255, Y=260$) and front axle ($X=765, Y=260$) with zero wobble, synchronized with the inverted wet asphalt road reflection.
+3. **Photorealistic Wet Asphalt Mirror Reflection**:
+   - Inverted underbody reflection (`transform: scaleY(-0.75) skewX(-2deg)`) that tracks the car in 100% lockstep with vertical water surface blur and gradient drop-off.
+4. **Dual Laser Headlight Optics & Asphalt Road Spotlight**:
+   - 6500K laser headlight beam projecting through dark atmosphere with anamorphic horizontal lens flare and an asphalt road spotlight that travels ahead of the front bumper.
+5. **Real-World Digital Cockpit HUD**:
+   - Live digital speedometer (0–280 km/h), real-time sequential gearbox simulation (`N`, `1ST` to `6TH`), dynamic lateral/longitudinal G-force meter, and horsepower telemetry.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **HTML5 & CSS3**: Custom properties (`--color-accent`, `--color-bg`, etc.), perspective road grid, and zero layout-trashing styles.
-- **Vanilla JavaScript (ES6+)**: Modular functions (`splitHeadline`, `initIntroAnimation`, `initScrollAnimation`, `initSmoothScroll`, `initTunerControls`).
+- **HTML5 & CSS3**: Custom properties (`--color-accent`, `--color-bg`, etc.), perspective road grid, wet asphalt texture, and zero layout-trashing styles.
+- **Vanilla JavaScript (ES6+)**: Modular functions (`splitHeadline`, `initIntroAnimation`, `initScrollAnimation`, `initSmoothScroll`, `Supra2JZAudioEngine`, `updateCockpitHUDLive`).
 - **GSAP 3 & ScrollTrigger (via cdnjs)**: Pinned scroll timelines, scrub interpolation, and responsive breakpoints using `gsap.matchMedia()`.
 - **Lenis Smooth Scroll (via unpkg CDN)**: Butter-smooth momentum scrolling piped directly into the GSAP ticker loop.
 - **Tailwind CSS (via CDN)**: Utility classes for responsive grid layouts and typography.
@@ -33,13 +40,13 @@ A production-quality, high-performance scroll-driven hero section inspired by [p
 ## 📁 Project Structure
 
 ```text
-├── index.html          # Semantic markup, CDNs, inline vector supercar, & 3 filler sections
+├── index.html          # Semantic markup, CDNs, HUD overlay, & 3 filler sections
 ├── css/
-│   └── style.css       # Custom properties, fluid clamp type, perspective grid, reduced-motion rules
+│   └── style.css       # Custom properties, wet reflection, asphalt textures, and responsive layout
 ├── js/
-│   └── main.js         # GSAP timelines, character splitting, ScrollTrigger scrub, & telemetry
+│   └── main.js         # GSAP timelines, Supra 2JZ audio engine, and HUD telemetry
 ├── assets/
-│   └── car.svg         # Standalone vector sports car graphic with rotatable wheel groups
+│   └── car.svg         # Photorealistic vector hypercar with rotating wheels and brake assemblies
 └── README.md           # Documentation, tuning parameters, and GitHub Pages deployment guide
 ```
 
@@ -47,16 +54,13 @@ A production-quality, high-performance scroll-driven hero section inspired by [p
 
 ## 🚀 How to Run Locally
 
-Because this is a 100% static project, you have several simple options to run it locally:
-
-### Option A: VS Code Live Server (Zero dependencies)
+### Option A: VS Code Live Server
 1. Open the project folder in VS Code.
-2. Install the **Live Server** extension (by Ritwick Dey).
+2. Install the **Live Server** extension.
 3. Right-click `index.html` and click **"Open with Live Server"**.
-4. The page opens automatically at `http://127.0.0.1:5500/index.html`.
+4. Opens automatically at `http://127.0.0.1:5500/index.html`.
 
 ### Option B: Python 3 built-in server
-Open your terminal in the project directory and run:
 ```bash
 python3 -m http.server 3000
 ```
@@ -72,81 +76,26 @@ npm run dev
 
 ---
 
-## 🎬 How the Animation Works
-
-### 1. Initial Page Load Animation (`initIntroAnimation`)
-- `splitHeadline()` reads `WELCOME ITZFIZZ` and splits every character into an accessible GPU-composited `span.headline-char` (wrapped with `aria-label="WELCOME ITZFIZZ"` for screen readers).
-- A master GSAP timeline reveals letters with an upward translation (`y: 35` to `0`) and opacity fade using a tight `0.05s` stagger and `power3.out` easing.
-- The car slides smoothly in from off-screen left into its resting starting position at `2vw`.
-- The 4 impact stats animate in sequentially (`0.12s` stagger) with a subtle scale bounce (`back.out(1.2)`).
-
-### 2. Pinned Scroll-Driven Scrub (`initScrollAnimation`)
-- **Pinning**: When the user scrolls, `ScrollTrigger` pins `#hero-section` for `+=200%` of viewport height (`pin: true, scrub: 1`).
-- **Translation**: As the user scrolls through this distance, the car travels horizontally across the viewport from `2vw` to `110vw` (desktop) or `120vw` (mobile).
-- **Physical Wheel Roll**: Rims rotate `+1440deg` (4 full revolutions) proportional to the distance traveled, creating an authentic rolling wheel effect.
-- **Dynamic Suspension & Aero**: The car body subtly pitches up `+1.1deg` under initial acceleration and settles `-0.6deg` as momentum stabilizes.
-- **Reactive Letter Illumination**: As the car reaches each letter's relative position across the viewport, that character flashes with a white-hot core, scale pulse, and electric orange drop shadow (`text-shadow: 0 0 20px #ff4d00`), before settling into an active illuminated state.
-- **Parallax Depth**: The stats row shifts down `40px` and eases to `40%` opacity, giving three-dimensional depth between foreground vehicle, midground stats, and background road grid.
-- **Bidirectional Reversibility**: Scrolling backwards cleanly reverses all timelines smoothly due to GSAP scrub interpolation.
-
----
-
-## 🎛️ Tunable Animation Parameters
-
-All motion properties can be tuned directly inside `/js/main.js` in the `ANIM_CONFIG` object:
-
-| Parameter | Location | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| `pinDistance` | `ANIM_CONFIG.pinDistance` | `'+=200%'` | Total scroll length during which hero stays pinned. Increase to `+=300%` for slower, cinematic scroll, or `+=150%` for quicker transit. |
-| `scrubSmoothing` | `ANIM_CONFIG.scrubSmoothing` | `1` | Scrub interpolation delay in seconds. `1` provides a weighted luxury feel; `0.3` is snappy; `true` binds 1:1 without inertia. |
-| `letterStagger` | `ANIM_CONFIG.letterStagger` | `0.05` | Delay (seconds) between sequential letters during page entrance. |
-| `letterEase` | `ANIM_CONFIG.letterEase` | `'power3.out'` | GSAP easing function for entrance reveal (`'expo.out'`, `'power2.out'`). |
-| `statsStagger` | `ANIM_CONFIG.statsStagger` | `0.12` | Delay between the 4 impact stat cards appearing. |
-| `wheelRotations`| `ANIM_CONFIG.wheelRotations`| `1440` | Total degrees of wheel rotation across the hero. (e.g. `2160` for faster spinning). |
-| `startOffsetXDesktop`| `ANIM_CONFIG` | `-35` | Off-screen left entrance position (vw). |
-| `endOffsetXDesktop` | `ANIM_CONFIG` | `110` | Off-screen right exit position (vw). |
-
----
-
 ## 🚢 GitHub Pages Deployment Instructions
 
-Because this repository contains pure static files (`index.html`, `/css/`, `/js/`, `/assets/`), deploying to GitHub Pages takes less than 60 seconds:
-
-### Step 1: Initialize Git and Commit
-```bash
-git init
-git add .
-git commit -m "feat: initial scroll-driven hero animation for ItzFizz"
-```
-
-### Step 2: Create a GitHub Repository & Push
-1. Go to [GitHub](https://github.com/new) and create a new public repository (e.g. `itzfizz-scroll-animation`).
-2. Run the following commands in your local terminal:
-```bash
-git branch -M main
-git remote add origin https://github.com/<YOUR-USERNAME>/itzfizz-scroll-animation.git
-git push -u origin main
-```
-
-### Step 3: Enable GitHub Pages
-1. In your GitHub repository, click on **Settings** (top navigation tab).
-2. On the left sidebar under *Code and automation*, click **Pages**.
-3. Under **Build and deployment**:
-   - **Source**: Select `Deploy from a branch`.
-   - **Branch**: Select `main` and leave folder as `/ (root)`.
-4. Click **Save**.
-
-### Step 4: Access Your Live Site
-Within 1–2 minutes, GitHub Pages will deploy your site. Your live URL will be:
-```text
-https://<YOUR-USERNAME>.github.io/itzfizz-scroll-animation/
-```
-
----
-
-## ♿ Accessibility & Performance Verification
-
-- **Compositor-Only Motion**: Animations strictly target `transform` (3D accelerated) and `opacity`. No layout recalculations on `top`, `left`, `width`, or `height`.
-- **Zero Scroll Layout Thrashing**: No `getBoundingClientRect()` or `offsetWidth` invocations inside scroll loops; ScrollTrigger uses pre-computed thresholds and `invalidateOnRefresh: true`.
-- **`prefers-reduced-motion`**: Handled via CSS `@media (prefers-reduced-motion: reduce)` and JS media query checks. Scrubbed translation is bypassed and all content is immediately displayed in full contrast.
-- **ARIA Semantics**: Kinetic split letters use `aria-hidden="true"`, while the parent container bears `aria-label="WELCOME ITZFIZZ"`.
+1. **Commit your static files**:
+   ```bash
+   git init
+   git add index.html css/ js/ assets/ README.md
+   git commit -m "feat: complete real-world scroll-driven hero animation with Supra 2JZ sound"
+   ```
+2. **Push to GitHub**:
+   ```bash
+   git branch -M main
+   git remote add origin https://github.com/<YOUR-USERNAME>/<REPO-NAME>.git
+   git push -u origin main
+   ```
+3. **Activate Pages**:
+   - Go to **Settings** $\rightarrow$ **Pages** on your repository.
+   - Under **Build and deployment > Branch**, choose **`main`** and **`/ (root)`**.
+   - Click **Save**.
+4. **Live URL**:
+   Your site will be available at:
+   ```
+   https://<YOUR-USERNAME>.github.io/<REPO-NAME>/
+   ```
